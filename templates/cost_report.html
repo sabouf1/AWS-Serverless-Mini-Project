@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Cost Report</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="{{ url_for('static', filename='cognito.js') }}"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">API Gateway Cloud Project - Group 2</a>
+            </div>
+        </nav>
+    </header>
+    
+    <div class="container mt-5">
+        <h2 class="mb-4">AWS Costs for the Last 24 Hours</h2>
+
+        <!-- Fetch Costs Button -->
+        <div class="d-flex align-items-center">
+            <!-- Fetch Costs Button -->
+            <button id="fetchButton" class="btn btn-primary">Get Your Costs</button>
+            <!-- Save to JSON Button -->
+            <button id="saveJsonButton" class="btn btn-success ml-3">Save to JSON</button>
+            <!-- Start Glue Job -->
+            <button id="etljob" class="btn btn-success ml-3">Start Glue Job</button>
+            <button id="getS3BucketsButton" class="btn btn-primary ml-3">Get S3 Objects</button>
+
+        </div>
+
+        <!-- Cost Table -->
+        <table class="table mt-3" id="costTable" style="display:none;">
+            <thead>
+                <tr>
+                    <th>Time Period</th>
+                    <th>Amortized Cost (USD)</th>
+                    <th>Blended Cost (USD)</th>
+                    <th>Unblended Cost (USD)</th>
+                    <th>Usage Quantity</th>
+                </tr>
+            </thead>
+            <tbody id="costTableBody">
+            </tbody>
+        </table>
+
+        <!-- Paste Costs and Save in DynamoDB -->
+        <div class="mt-5">
+            <h2 class="mb-4">Paste Costs and Save in DynamoDB</h2>
+            <textarea id="costJsonInput" rows="5" cols="40" placeholder="Paste JSON data here" class="form-control"></textarea>
+            <button id="saveDynamoDBButton" class="btn btn-secondary mt-3">Save to DynamoDB</button>
+        </div>
+
+        <!-- Log Out Button -->
+        <button id="logoutButton" class="btn btn-danger mt-3">Log Out</button>
+    </div>
+    <footer>
+        <div class="container">
+            <p class="text-center">2023 &copy;</p>
+        </div>
+    </footer>
+    
+    <!-- JavaScript and Bootstrap Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.9/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='fetch_costs.js') }}"></script>
+    <script src="{{ url_for('static', filename='save_to_dynamodb.js') }}"></script>
+    <script src="{{ url_for('static', filename='save_to_json.js') }}"></script>
+    <script src="{{ url_for('static', filename='logout.js') }}"></script>
+    <script src="{{ url_for('static', filename='gets3details.js') }}"></script>
+
+</body>
+</html>
