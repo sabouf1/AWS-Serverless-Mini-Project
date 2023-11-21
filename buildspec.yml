@@ -6,9 +6,9 @@ phases:
       python: 3.11
     commands:
       - echo Installing dependencies...
+      - yum update -y
+      - yum install -y python38-devel
       - pip install -r requirements.txt
-      - apt-get update
-      # - apt-get install -y python-dev
 
   pre_build:
     commands:
