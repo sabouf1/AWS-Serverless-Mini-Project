@@ -13,5 +13,7 @@ phases:
       - aws eks update-kubeconfig --region us-east-1 --name Flask-cluster
   build:
     commands:
+      - git clone https://github.com/sabouf1/AWS-Serverless-Mini-Project
+      - cd AWS-Serverless-Mini-Project
       - kubectl apply -f flask-app-deployment.yaml
       - kubectl apply -f flask-app-service.yaml
