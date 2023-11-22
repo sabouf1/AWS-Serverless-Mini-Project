@@ -11,6 +11,8 @@ phases:
       - chmod +x ./kubectl
       - mv ./kubectl /usr/local/bin
       - aws eks update-kubeconfig --region us-east-1 --name Flask-cluster
+      - kubectl config view
+
   build:
     commands:
       - git clone https://github.com/sabouf1/AWS-Serverless-Mini-Project
