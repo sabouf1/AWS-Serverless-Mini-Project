@@ -12,8 +12,8 @@ phases:
       - mv ./kubectl /usr/local/bin
       - aws configure list
       - echo "Kubeconfig file contents:"
-      - cat /root/.kube/config  # Check the kubeconfig file location
       - aws eks update-kubeconfig --region us-east-1 --name Flask-cluster
+      - cat ~/.kube/config
       - kubectl config view
 
   build:
