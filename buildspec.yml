@@ -7,8 +7,11 @@ phases:
     commands:
       - echo Installing dependencies...
       - yum update -y
-      - kubectl apply -f flask-app-deployment.yaml
-      - kubectl apply -f flask-app-service.yaml
-
-
-
+      - curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.18.9/2020-11-02/bin/linux/amd64/kubectl
+      - chmod +x ./kubectl
+      - mv ./kubectl /usr/local/bin
+      - aws eks update-kubeconfig --region us-east-1 --name Flask-cluster
+  build:
+    commands:
+      - kubectl apply -f /path/to/flask-app-deployment.yaml
+      - kubectl apply -f /path/to/flask-app-service.yaml
