@@ -26,5 +26,6 @@ phases:
       - docker build -t thedictator10/flask-app:latest .
       - echo Docker image built successfully.
       - docker push thedictator10/flask-app:latest
+      - kubectl delete deployment flask-app-deployment
       - kubectl apply -f flask-app-deployment.yaml
-      - kubectl apply -f flask-app-service.yaml
+      # - kubectl apply -f flask-app-service.yaml
