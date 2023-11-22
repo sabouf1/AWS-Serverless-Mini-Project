@@ -3,32 +3,12 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      python: 3.11
+      python: 3.9
     commands:
       - echo Installing dependencies...
       - yum update -y
-      - pip install -r requirements.txt
+      - kubectl apply -f flask-app-deployment.yaml
+      - kubectl apply -f flask-app-service.yaml
 
-  pre_build:
-    commands:
-      - echo Pre-build phase...
 
-  build:
-    commands:
-      - echo Build started on `date`
-      - echo Running Flask tests...
-      # Include commands to run your tests here (if any)
 
-  post_build:
-    commands:
-      - echo Build completed on `date`
-      - echo Generating artifact...
-      - zip -r flask-app.zip . -x "*.git*"
-
-artifacts:
-  files:
-    - flask-app.zip
-
-cache:
-  paths:
-    - '/root/.cache/pip/**/*'

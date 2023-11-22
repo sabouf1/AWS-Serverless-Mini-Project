@@ -1,0 +1,20 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: Flask-cluster
+  region: us-east-1
+
+nodeGroups:
+  - name: ng-1
+    instanceType: your-instance-type
+    minSize: 2
+    maxSize: 5
+    desiredCapacity: 2
+    volumeSize: 20
+    ssh:
+      allow: true
+      publicKeyPath: ~/.ssh/id_rsa.pub
+
+
+aws eks create-nodegroup --cluster-name Flask-cluster --nodegroup-name ng-1 --node-role arn:aws:iam::411658317626:role/aws-service-role/eks-nodegroup.amazonaws.com/AWSServiceRoleForAmazonEKSNodegroup --subnets subnet-0187569e8efbcbcbf --instance-types t3.xlarge --disk-size 20 --min-size 2 --max-size 5 --desired-size 2 --remote-access ec2SshKey=your-ssh-key-pair-name
