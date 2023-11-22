@@ -29,3 +29,4 @@ phases:
       - kubectl delete deployment flask-app-deployment
       - kubectl apply -f flask-app-deployment.yaml
       # - kubectl apply -f flask-app-service.yaml
+      - kubectl get services
