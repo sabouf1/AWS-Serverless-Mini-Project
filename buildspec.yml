@@ -7,7 +7,8 @@ phases:
     commands:
       - echo Installing dependencies...
       - yum update -y
-      - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
+      - echo -n "$DOCKERHUB_USERNAME:$DOCKERHUB_PASSWORD" | base64 -w 0 > docker-auth.txt
+      - cat docker-auth.txt | docker login --username $DOCKERHUB_USERNAME --password-stdin
       - curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.18.9/2020-11-02/bin/linux/amd64/kubectl
       - chmod +x ./kubectl
       - mv ./kubectl /usr/local/bin
