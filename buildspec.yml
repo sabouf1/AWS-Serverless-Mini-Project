@@ -13,5 +13,5 @@ phases:
       - aws eks update-kubeconfig --region us-east-1 --name Flask-cluster
   build:
     commands:
-      - kubectl apply -f /path/to/flask-app-deployment.yaml
-      - kubectl apply -f /path/to/flask-app-service.yaml
+      - kubectl apply -f flask-app-deployment.yaml
+      - kubectl apply -f flask-app-service.yaml
